@@ -17,6 +17,6 @@ keywords = ["erpnext", "frappe", "alkhora", "dashboard", "analytics"]
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["management_dashboard", "management_dashboard.api"]
+include = ["management_dashboard"]
 exclude = ["*.tests", "*.tests.*", "tests.*", "tests"]
 
