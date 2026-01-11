@@ -16,7 +16,3 @@ keywords = ["erpnext", "frappe", "alkhora", "dashboard", "analytics"]
 [tool.setuptools]
 include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["management_dashboard*"]
-
