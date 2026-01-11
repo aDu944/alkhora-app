@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 setup(
@@ -6,8 +6,8 @@ setup(
     version="1.0.0",
     description="ALKHORA Company App - Custom ERPNext extensions and workspaces",
     author="ALKHORA",
-    author_email="support@alkhora.co",
-    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    author_email="support@alkhora.com",
+    packages=["management_dashboard", "management_dashboard.api"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
