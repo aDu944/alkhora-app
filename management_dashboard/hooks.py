@@ -15,7 +15,7 @@ app_icon = "octicon octicon-briefcase"
 # Workspaces
 workspaces = [
 	{
-		"module_name": "Management Dashboard",
+		"module_name": "management_dashboard",
 		"type": "module",
 		"label": "Management Dashboard",
 		"color": "#4F46E5",
@@ -23,4 +23,8 @@ workspaces = [
 		"description": "Annual management KPIs dashboard",
 	}
 ]
+
+# Empty asset hooks to prevent build system from discovering modules incorrectly
+app_include_css = []
+app_include_js = []
 

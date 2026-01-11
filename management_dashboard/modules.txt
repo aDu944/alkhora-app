@@ -1,2 +1,2 @@
-Management Dashboard
+management_dashboard
 
