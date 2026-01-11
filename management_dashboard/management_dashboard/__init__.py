@@ -1,3 +1,1 @@
-__version__ = "0.0.1"
-
-# This file makes management_dashboard a proper Python package
+__version__ = "1.0.0"

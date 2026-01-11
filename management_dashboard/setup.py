@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="management_dashboard",
@@ -6,7 +6,7 @@ setup(
     description="ALKHORA Company App",
     author="ALKHORA",
     author_email="support@alkhora.com",
-    packages=["management_dashboard"],
+    packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
