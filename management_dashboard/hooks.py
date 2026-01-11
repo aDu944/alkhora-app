@@ -12,6 +12,8 @@ required_apps = ["erpnext"]
 # App icon
 app_icon = "octicon octicon-briefcase"
 
-# Home page (first page users see)
-home_page = "management_dashboard"
+# Workspaces
+from management_dashboard.management_dashboard.config.desktop import get_data as get_workspace_data
+
+workspaces = get_workspace_data()
 
