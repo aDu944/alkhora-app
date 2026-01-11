@@ -7,7 +7,7 @@ setup(
     description="ALKHORA Company App - Custom ERPNext extensions and workspaces",
     author="ALKHORA",
     author_email="support@alkhora.co",
-    packages=find_packages(),
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     include_package_data=True,
     zip_safe=False,
     classifiers=[

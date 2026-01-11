@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard - Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f3f4f6;
+            color: #1f2937;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Filter Panel */
+        .md-filters {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #6b7280;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .btn:hover {
+            background: #f9fafb;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+        /* KPI Section */
+        .md-kpis {
+            margin-bottom: 24px;
+        }
+
+        .md-kpis-header {
+            margin-bottom: 16px;
+        }
+
+        .md-kpis-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .md-kpis-subtitle {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .md-kpis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .md-kpi-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .md-kpi-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .md-kpi-label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .md-kpi-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .md-kpi-value.negative {
+            color: #ef4444;
+        }
+
+        .md-kpi-comparison {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 12px;
+            padding-top: 8px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .md-kpi-prev {
+            color: #6b7280;
+        }
+
+        .md-kpi-change {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .md-kpi-change.negative {
+            color: #ef4444;
+        }
+
+        /* Charts Section */
+        .md-charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .md-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .md-card-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* Breakdowns Section */
+        .md-breakdowns-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .md-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .md-list-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: white;
+        }
+
+        .md-list-main {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .md-badge {
+            font-size: 11px;
+            color: #6b7280;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-weight: 500;
+        }
+
+        .md-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .md-link:hover {
+            text-decoration: underline;
+        }
+
+        .md-list-value {
+            font-weight: 700;
+        }
+
+        .md-kpi-rows {
+            display: grid;
+            gap: 12px;
+        }
+
+        .md-kpi-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .md-kpi-row-label {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .md-kpi-row-value {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .md-kpis-grid,
+            .md-charts-container,
+            .md-breakdowns-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Filter Panel -->
+        <div class="md-filters">
+            <div class="filter-row">
+                <div class="form-group">
+                    <label>Year</label>
+                    <input type="number" value="2024">
+                </div>
+                <div class="form-group">
+                    <label>Company</label>
+                    <select>
+                        <option>ABC Corporation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Cost Center</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+            </div>
+            <div class="filter-row">
+                <div class="form-group">
+                    <label>Project</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+                <div class="form-group">
+                    <label>Customer Group</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+                <div class="form-group">
+                    <label>Supplier Group</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+                <div class="form-group">
+                    <label>Item Group</label>
+                    <input type="text" placeholder="Type to search...">
+                </div>
+            </div>
+            <div class="filter-actions">
+                <select style="margin-right: auto;">
+                    <option>Monthly</option>
+                    <option>Quarterly</option>
+                    <option>Weekly</option>
+                </select>
+                <button class="btn btn-primary">Refresh</button>
+                <button class="btn">Export CSV</button>
+                <button class="btn">Export Excel</button>
+                <button class="btn">Export PDF</button>
+                <button class="btn">Print</button>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="md-kpis">
+            <div class="md-kpis-header">
+                <div class="md-kpis-title">Annual Summary — 2024 vs 2023</div>
+                <div class="md-kpis-subtitle">Current Period: 2024-01-01 → 2024-12-31</div>
+            </div>
+            <div class="md-kpis-grid">
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Sales Invoice (Net)</div>
+                    <div class="md-kpi-value">$1,250,000</div>
+                    <div class="md-kpi-comparison">
+                        <span class="md-kpi-prev">Previous: $1,100,000</span>
+                        <span class="md-kpi-change">+13.6%</span>
+                    </div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Sales Invoice (Gross)</div>
+                    <div class="md-kpi-value">$1,350,000</div>
+                    <div class="md-kpi-comparison">
+                        <span class="md-kpi-prev">Previous: $1,200,000</span>
+                        <span class="md-kpi-change">+12.5%</span>
+                    </div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Sales Order</div>
+                    <div class="md-kpi-value">$1,400,000</div>
+                    <div class="md-kpi-comparison">
+                        <span class="md-kpi-prev">Previous: $1,300,000</span>
+                        <span class="md-kpi-change">+7.7%</span>
+                    </div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Delivery Note</div>
+                    <div class="md-kpi-value">$1,200,000</div>
+                    <div class="md-kpi-comparison">
+                        <span class="md-kpi-prev">Previous: $1,100,000</span>
+                        <span class="md-kpi-change">+9.1%</span>
+                    </div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Net Profit</div>
+                    <div class="md-kpi-value">$150,000</div>
+                    <div class="md-kpi-comparison">
+                        <span class="md-kpi-prev">Previous: $120,000</span>
+                        <span class="md-kpi-change">+25.0%</span>
+                    </div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">AR Outstanding</div>
+                    <div class="md-kpi-value">$250,000</div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">AP Outstanding</div>
+                    <div class="md-kpi-value">$180,000</div>
+                </div>
+                <div class="md-kpi-card">
+                    <div class="md-kpi-label">Cash & Bank</div>
+                    <div class="md-kpi-value">$500,000</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="md-charts-container">
+            <div class="md-card">
+                <div class="md-card-title">Sales vs Purchases (Monthly)</div>
+                <div class="chart-placeholder">📊 Bar Chart: Sales (Blue) vs Purchases (Orange)</div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">AR Aging</div>
+                <div class="chart-placeholder">📊 Bar Chart: 0-30, 31-60, 61-90, 90+ days</div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">AP Aging</div>
+                <div class="chart-placeholder">📊 Bar Chart: 0-30, 31-60, 61-90, 90+ days</div>
+            </div>
+        </div>
+
+        <!-- Breakdowns Section -->
+        <div class="md-breakdowns-container">
+            <div class="md-card">
+                <div class="md-card-title">Cash & Bank Balances</div>
+                <div class="md-list">
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            Main Bank Account
+                            <span class="md-badge">Bank</span>
+                        </div>
+                        <div class="md-list-value">$300,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            Petty Cash
+                            <span class="md-badge">Cash</span>
+                        </div>
+                        <div class="md-list-value">$5,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            Savings Account
+                            <span class="md-badge">Bank</span>
+                        </div>
+                        <div class="md-list-value">$195,000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">Top Overdue Customers</div>
+                <div class="md-list">
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Customer A</a>
+                        </div>
+                        <div class="md-list-value">$50,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Customer B</a>
+                        </div>
+                        <div class="md-list-value">$35,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Customer C</a>
+                        </div>
+                        <div class="md-list-value">$25,000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">Top Suppliers</div>
+                <div class="md-list">
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Supplier X</a>
+                        </div>
+                        <div class="md-list-value">$200,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Supplier Y</a>
+                        </div>
+                        <div class="md-list-value">$150,000</div>
+                    </div>
+                    <div class="md-list-row">
+                        <div class="md-list-main">
+                            <a href="#" class="md-link">Supplier Z</a>
+                        </div>
+                        <div class="md-list-value">$100,000</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">Customer Health</div>
+                <div class="md-kpi-rows">
+                    <div class="md-kpi-row">
+                        <div class="md-kpi-row-label">New Customers</div>
+                        <div class="md-kpi-row-value">15</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md-card">
+                <div class="md-card-title">HR Metrics</div>
+                <div class="md-kpi-rows">
+                    <div class="md-kpi-row">
+                        <div class="md-kpi-row-label">Headcount</div>
+                        <div class="md-kpi-row-value">45</div>
+                    </div>
+                    <div class="md-kpi-row">
+                        <div class="md-kpi-row-label">Payroll Cost</div>
+                        <div class="md-kpi-row-value">$450,000</div>
+                    </div>
+                    <div class="md-kpi-row">
+                        <div class="md-kpi-row-label">Open Positions</div>
+                        <div class="md-kpi-row-value">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
