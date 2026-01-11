@@ -7,7 +7,7 @@ setup(
     description="ALKHORA Company App - Custom ERPNext extensions and workspaces",
     author="ALKHORA",
     author_email="support@alkhora.co",
-    packages=["management_dashboard", "management_dashboard.api", "management_dashboard.config"],
+    packages=["management_dashboard", "management_dashboard.api"],
     include_package_data=True,
     zip_safe=False,
     install_requires=[],
