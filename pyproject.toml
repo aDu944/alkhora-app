@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "management_dashboard"
+version = "1.0.0"
+description = "ALKHORA Company App - Custom ERPNext extensions and workspaces"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "license.txt" }
+authors = [{ name = "ALKHORA", email = "support@alkhora.co" }]
+dependencies = []
+keywords = ["erpnext", "frappe", "alkhora", "dashboard", "analytics"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+

@@ -1,0 +1,17 @@
+{
+  "doctype": "Page",
+  "name": "management_dashboard",
+  "module": "Management Dashboard",
+  "title": "Management Dashboard",
+  "icon": "octicon octicon-graph",
+  "standard": "Yes",
+  "roles": [
+    {
+      "role": "Management"
+    },
+    {
+      "role": "System Manager"
+    }
+  ]
+}
+

@@ -1,0 +1,423 @@
+/* Management Dashboard Styles */
+.management-dashboard {
+	--md-primary: #2563eb;
+	--md-primary-dark: #1e40af;
+	--md-success: #10b981;
+	--md-warning: #f59e0b;
+	--md-danger: #ef4444;
+	--md-text: var(--text-color, #1f2937);
+	--md-text-muted: var(--text-muted, #6b7280);
+	--md-border: var(--border-color, #e5e7eb);
+	--md-bg: var(--card-bg, #ffffff);
+	--md-bg-light: var(--bg-color, #f9fafb);
+}
+
+.management-dashboard.md-rtl {
+	direction: rtl;
+}
+
+.management-dashboard .md-filters {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 16px;
+	margin-bottom: 24px;
+	padding: 16px;
+	background: var(--md-bg);
+	border: 1px solid var(--md-border);
+	border-radius: 8px;
+}
+
+.management-dashboard .md-filter-row-1,
+.management-dashboard .md-filter-row-2 {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 12px;
+	align-items: end;
+}
+
+.management-dashboard .md-filter-actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	padding-top: 12px;
+	border-top: 1px solid var(--md-border);
+}
+
+.management-dashboard.md-rtl .md-filter-actions {
+	justify-content: flex-start;
+}
+
+.management-dashboard .md-action-buttons {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.management-dashboard .md-kpis {
+	margin: 16px 0 24px;
+}
+
+.management-dashboard .md-kpis-header {
+	margin-bottom: 16px;
+}
+
+.management-dashboard .md-kpis-title {
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: var(--md-text);
+	margin-bottom: 4px;
+}
+
+.management-dashboard .md-kpis-subtitle {
+	color: var(--md-text-muted);
+	font-size: 14px;
+}
+
+.management-dashboard .md-kpis-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 16px;
+}
+
+.management-dashboard .md-kpi-card {
+	border: 1px solid var(--md-border);
+	border-radius: 12px;
+	background: var(--md-bg);
+	padding: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	position: relative;
+}
+
+.management-dashboard .md-kpi-card:hover {
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	border-color: var(--md-primary);
+	transform: translateY(-2px);
+}
+
+.management-dashboard .md-kpi-label {
+	color: var(--md-text-muted);
+	font-size: 13px;
+	margin-bottom: 8px;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.management-dashboard .md-kpi-value {
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--md-text);
+	margin-bottom: 8px;
+}
+
+.management-dashboard .md-kpi-value.md-negative {
+	color: var(--md-danger);
+}
+
+.management-dashboard .md-kpi-comparison {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	font-size: 12px;
+	padding-top: 8px;
+	border-top: 1px solid var(--md-border);
+}
+
+.management-dashboard .md-kpi-prev {
+	color: var(--md-text-muted);
+}
+
+.management-dashboard .md-kpi-change {
+	font-weight: 600;
+	color: var(--md-success);
+}
+
+.management-dashboard .md-kpi-change.md-negative-change {
+	color: var(--md-danger);
+}
+
+.management-dashboard .md-charts-container,
+.management-dashboard .md-breakdowns-container,
+.management-dashboard .md-tables-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	gap: 16px;
+	margin-bottom: 24px;
+}
+
+.management-dashboard .md-card {
+	border: 1px solid var(--md-border);
+	border-radius: 12px;
+	background: var(--md-bg);
+	padding: 20px;
+	min-height: 200px;
+}
+
+.management-dashboard .md-card-title {
+	font-weight: 700;
+	font-size: 16px;
+	margin-bottom: 16px;
+	color: var(--md-text);
+	border-bottom: 2px solid var(--md-border);
+	padding-bottom: 8px;
+}
+
+.management-dashboard .md-chart {
+	min-height: 250px;
+	position: relative;
+}
+
+.management-dashboard .md-kpi-rows {
+	display: grid;
+	gap: 12px;
+}
+
+.management-dashboard .md-kpi-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	padding: 12px;
+	background: var(--md-bg-light);
+	border-radius: 8px;
+}
+
+.management-dashboard .md-kpi-row-label {
+	color: var(--md-text-muted);
+	font-size: 14px;
+}
+
+.management-dashboard .md-kpi-row-value {
+	font-weight: 700;
+	font-size: 16px;
+	color: var(--md-text);
+}
+
+.management-dashboard .md-list {
+	display: grid;
+	gap: 8px;
+}
+
+.management-dashboard .md-list-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 16px;
+	padding: 12px;
+	border: 1px solid var(--md-border);
+	border-radius: 8px;
+	background: var(--md-bg);
+	transition: background 0.2s ease;
+}
+
+.management-dashboard .md-list-row:hover {
+	background: var(--md-bg-light);
+}
+
+.management-dashboard .md-list-main {
+	min-width: 0;
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.management-dashboard .md-list-value {
+	font-weight: 700;
+	white-space: nowrap;
+	color: var(--md-text);
+}
+
+.management-dashboard .md-link {
+	color: var(--md-primary);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.management-dashboard .md-link:hover {
+	text-decoration: underline;
+}
+
+.management-dashboard .md-badge {
+	font-size: 11px;
+	color: var(--md-text-muted);
+	background: var(--md-bg-light);
+	border: 1px solid var(--md-border);
+	border-radius: 12px;
+	padding: 2px 8px;
+	font-weight: 500;
+}
+
+.management-dashboard .md-empty {
+	color: var(--md-text-muted);
+	padding: 40px 20px;
+	text-align: center;
+	font-style: italic;
+}
+
+.management-dashboard.md-loading {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.management-dashboard.md-loading::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 40px;
+	height: 40px;
+	margin: -20px 0 0 -20px;
+	border: 4px solid var(--md-border);
+	border-top-color: var(--md-primary);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* RTL Support */
+.management-dashboard.md-rtl .md-kpi-row,
+.management-dashboard.md-rtl .md-list-row {
+	direction: rtl;
+	text-align: right;
+}
+
+.management-dashboard.md-rtl .md-kpi-row-label,
+.management-dashboard.md-rtl .md-list-main {
+	text-align: right;
+}
+
+/* Print Styles */
+@media print {
+	.management-dashboard .md-filters,
+	.management-dashboard .md-action-buttons,
+	.management-dashboard .md-kpi-card {
+		break-inside: avoid;
+	}
+
+	.management-dashboard .md-card {
+		break-inside: avoid;
+		page-break-inside: avoid;
+	}
+
+	.management-dashboard {
+		background: white;
+	}
+
+	.management-dashboard .md-kpi-card:hover {
+		transform: none;
+		box-shadow: none;
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.management-dashboard .md-kpis-grid {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	}
+
+	.management-dashboard .md-charts-container,
+	.management-dashboard .md-breakdowns-container,
+	.management-dashboard .md-tables-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 768px) {
+	.management-dashboard .md-filters {
+		padding: 12px;
+	}
+
+	.management-dashboard .md-filter-row-1,
+	.management-dashboard .md-filter-row-2 {
+		grid-template-columns: 1fr;
+	}
+
+	.management-dashboard .md-filter-actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.management-dashboard .md-action-buttons {
+		flex-direction: column;
+	}
+
+	.management-dashboard .md-action-buttons .btn {
+		width: 100%;
+	}
+
+	.management-dashboard .md-kpis-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.management-dashboard .md-kpis-title {
+		font-size: 20px;
+	}
+
+	.management-dashboard .md-kpi-value {
+		font-size: 20px;
+	}
+}
+
+/* Multi-Select Link Styling */
+.management-dashboard .md-multiselect-link {
+	width: 100%;
+}
+
+.management-dashboard .control-input-wrapper {
+	position: relative;
+}
+
+.management-dashboard .form-group {
+	margin-bottom: 12px;
+}
+
+.management-dashboard .form-group .control-label {
+	margin-bottom: 4px;
+	font-weight: 500;
+	font-size: 12px;
+}
+
+/* Loading State */
+.management-dashboard.md-loading {
+	position: relative;
+}
+
+.management-dashboard.md-loading::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1000;
+	border-radius: 8px;
+}
+
+.management-dashboard.md-loading::after {
+	content: "";
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+	border: 4px solid var(--md-border);
+	border-top-color: var(--md-primary);
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+	z-index: 1001;
+}
