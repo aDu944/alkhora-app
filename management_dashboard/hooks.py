@@ -13,7 +13,14 @@ required_apps = ["erpnext"]
 app_icon = "octicon octicon-briefcase"
 
 # Workspaces
-from management_dashboard.management_dashboard.config.desktop import get_data as get_workspace_data
-
-workspaces = get_workspace_data()
+workspaces = [
+	{
+		"module_name": "Management Dashboard",
+		"type": "module",
+		"label": "Management Dashboard",
+		"color": "#4F46E5",
+		"icon": "octicon octicon-graph",
+		"description": "Annual management KPIs dashboard",
+	}
+]
 
