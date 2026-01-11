@@ -11,8 +11,6 @@ setup(
         "management_dashboard",
         "management_dashboard.api",
         "management_dashboard.config",
-        "management_dashboard.page",
-        "management_dashboard.page.management_dashboard",
     ],
     include_package_data=True,
     zip_safe=False,
