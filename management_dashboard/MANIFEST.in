@@ -1,0 +1,4 @@
+include license.txt
+include README.md
+recursive-include management_dashboard *.json *.md *.html *.css *.js *.py
+
