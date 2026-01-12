@@ -1,2 +1,0 @@
-# This file ensures the public directory is tracked by git
-# Frappe expects this directory to exist for asset building

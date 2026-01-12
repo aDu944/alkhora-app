@@ -24,6 +24,8 @@ workspaces = [
 	}
 ]
 
-# Asset hooks - minimal JS file for build system
+# Skip asset building - app has no frontend assets
 app_include_css = []
-app_include_js = ["public/js/management_dashboard.js"]
+app_include_js = []
+web_include_css = []
+web_include_js = []
