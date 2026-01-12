@@ -16,12 +16,11 @@ app_icon = "octicon octicon-briefcase"
 workspaces = [
 	{
 		"module_name": "management_dashboard",
-		"type": "page",
+		"type": "module",
 		"label": "Management Dashboard",
 		"color": "#4F46E5",
 		"icon": "octicon octicon-graph",
 		"description": "Annual management KPIs dashboard",
-		"link": "management_dashboard",
 	}
 ]
 
