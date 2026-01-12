@@ -1,4 +1,12 @@
 {
-  "js": {},
-  "css": {}
+  "js": {
+    "management_dashboard.bundle.js": [
+      "public/js/management_dashboard.bundle.js"
+    ]
+  },
+  "css": {
+    "management_dashboard.bundle.css": [
+      "public/css/management_dashboard.bundle.css"
+    ]
+  }
 }
