@@ -1,0 +1,2 @@
+# This directory is required by Frappe's build system
+# Even if empty, the public directory must exist for path resolution
